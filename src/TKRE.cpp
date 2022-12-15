@@ -80,7 +80,8 @@ inline bool canDodge(RE::PlayerCharacter* a_pc) {
 	auto controlMap = RE::ControlMap::GetSingleton();
 	auto attackState = a_pc->AsActorState()->GetAttackState();
 	return a_pc->GetGraphVariableBool("bIsDodging", bIsDodging) && !bIsDodging  
-		&& ((attackState == RE::ATTACK_STATE_ENUM::kNone) || Settings::enableDodgeAttackCancel) && (!a_pc->AsActorState()->IsSprinting() || !Settings::EnableSprintKeyDodge) 
+		&& ((attackState == RE::ATTACK_STATE_ENUM::kNone) || Settings::enableDodgeAttackCancel) 
+		&& (!a_pc->AsActorState()->IsSprinting() || !Settings::EnableSprintKeyDodge) 
 		&& (controlMap->IsMovementControlsEnabled() && controlMap->IsFightingControlsEnabled())
 		&& (!a_pc->IsSneaking() || Settings::enableSneakDodge)
 		&& playerControls && playerControls->attackBlockHandler && playerControls->attackBlockHandler->inputEventHandlingEnabled && playerControls->movementHandler && playerControls->movementHandler->inputEventHandlingEnabled &&
